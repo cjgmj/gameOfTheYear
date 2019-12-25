@@ -22,6 +22,7 @@
     "@angular/router": "~8.2.14",
     "@swimlane/ngx-charts": "^13.0.0",
     "rxjs": "~6.4.0",
+    "sweetalert2": "^9.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

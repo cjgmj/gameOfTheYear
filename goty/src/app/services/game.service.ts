@@ -21,4 +21,8 @@ export class GameService {
       return this.http.get<Game[]>(`${ environment.url }/api/goty`).pipe(tap(juegos => this.juegos = juegos));
     }
   }
+
+  votarJuego(id: string) {
+    return this.http.post(`${ environment.url }/api/goty/${id}`, {});
+  }
 }
