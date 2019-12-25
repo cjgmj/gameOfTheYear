@@ -1,6 +1,9 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 
+import * as express from 'express';
+import * as cors from 'cors';
+
 
 const serviceAccount = require('./serviceAccountKey.json');
 
@@ -28,4 +31,19 @@ export const getGOTY = functions.https.onRequest(async(request, response) => {
     response.json(juegos);
 
 });
-   
+
+// Express
+const app = express();
+app.use( cors({ origin: true }) );
+
+app.get('/goty', async(req, res) => {
+    const gotyRef = bdd.collection('goty');
+    const docsSnap = await gotyRef.get();
+    const juegos = docsSnap.docs.map(doc => doc.data());
+
+    res.json(juegos);
+});
+
+// Se puede hacer de las dos formas
+// exports.api = functions.https.onRequest( app );
+export const api = functions.https.onRequest( app );
