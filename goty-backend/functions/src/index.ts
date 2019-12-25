@@ -14,5 +14,14 @@ admin.initializeApp({
 // // https://firebase.google.com/docs/functions/typescript
 
 export const helloWorld = functions.https.onRequest((request, response) => {
- response.json({ mensaje: 'Hola mundo desde Funciones de Firebase'});
+    response.json({ mensaje: 'Hola mundo desde Funciones de Firebase'});
 });
+
+export const getGOTY = functions.https.onRequest((request, response) => {
+    const nombre = request.query.nombre || 'Sin nombre';
+
+    response.json({
+        nombre
+    })
+});
+   
